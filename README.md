@@ -3,7 +3,7 @@ Spelling checker using python
 
 <br />
 
-`Ajay Raj M`
+`*Ajay Raj M*`
  `Rohith M`
 `Adhvaith Sankar`
-'Gowtham Govindh. S'
+`Gowtham Govindh  S`
