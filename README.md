@@ -1,6 +1,6 @@
 # SpellingChecker
 Spelling checker using python
 
+<br />
 
-<br>
 `Ajay Raj M`
