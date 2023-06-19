@@ -6,4 +6,4 @@ Spelling checker using python
 `Ajay Raj M`
  `Rohith M`
 `Adhvaith Sankar`
-`Gowtham Govindh  S`
+`Gowtham Govindh S`
