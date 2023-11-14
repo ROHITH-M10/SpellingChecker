@@ -86,34 +86,37 @@ def get_suggestions(root, word, suggestion_table):
     node = root
     suggestions = []
     current_prefix = ""
-    
-    def dfs(node, prefix):
-        nonlocal suggestions
-        nonlocal current_prefix
-        
-        if node.is_end_of_word:
-            suggestions.append(current_prefix + prefix)
-        
-        for char, child in node.children.items():
-            dfs(child, prefix + char)
-    
-    def find_suggestions(node, word):
-        nonlocal current_prefix
-        
-        for char in word:
-            if char not in node.children:
-                return
-            
-            current_prefix += char
-            node = node.children[char]
-        
-        dfs(node, "")
-    
-    find_suggestions(root, word)
 
-    suggestions_list = suggestion_table.get(get_hash(word), [])
-    suggestions_list.extend(suggestions)
-    suggestion_table[get_hash(word)] = suggestions_list
+    if suggestion_table.get(get_hash(word), []) == []:
+
+        def dfs(node, prefix):
+            nonlocal suggestions
+            nonlocal current_prefix
+            
+            if node.is_end_of_word:
+                suggestions.append(current_prefix + prefix)
+            
+            for char, child in node.children.items():
+                dfs(child, prefix + char)
+        
+        def find_suggestions(node, word):
+            nonlocal current_prefix
+            
+            for char in word:
+                if char not in node.children:
+                    return
+                
+                current_prefix += char
+                node = node.children[char]
+            
+            dfs(node, "")
+        
+        find_suggestions(root, word)
+        suggestion_table[get_hash(word)] = suggestions
+
+ 
+    # suggestions_list.extend(suggestions)
+    # suggestion_table[get_hash(word)] = suggestions_list
 
 class SpellingCheckerGUI:
     def __init__(self, root):
